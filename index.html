@@ -19,6 +19,7 @@
   <meta property="og:description" content="ショッピング中に“税込いくら？税抜いくら？何％OFF？”が一瞬で分かるシンプル計算ツール。">
   <meta property="og:type" content="website">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9727255179923866" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cleverkitjp.github.io/common.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -173,17 +174,23 @@
         </div>
       </div>
     </section>
-
-    <footer class="page-footer">
-      <p class="note">
-        端数は 1円未満を四捨五入して計算しています。実際の会計処理とは異なる場合があります。
-      </p>
-      <p class="back-to-top">
-       <a href="https://cleverkitjp.github.io/">cleverkitjp トップページへ戻る</a>
-      </p>
-
-    </footer>
   </main>
+
+  <div id="ck-footer-container"></div>
+  <script>
+    (function() {
+      var container = document.getElementById('ck-footer-container');
+      if (!container) return;
+
+      fetch('https://cleverkitjp.github.io/footer.html')
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          container.innerHTML = html;
+          try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        })
+        .catch(function(e) {});
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>
